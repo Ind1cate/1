@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简略测试页 · 基础模板</title>
+    <!-- 极简风格，仅用于快速测试 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+        .test-card {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.1), 0 8px 20px -6px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+            border: 1px solid #eef2f6;
+        }
+        .test-card:hover {
+            transform: translateY(-3px);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        h1 span {
+            background: #3b82f6;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+        .description {
+            color: #475569;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 1.5rem;
+        }
+        .info-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e9eef3;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 8px;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .badge {
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        .badge.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            border: none;
+            background: #ffffff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #dbe1e9;
+            color: #1e293b;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: #0f172a;
+            border-color: #0f172a;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #1e293b;
+            border-color: #1e293b;
+            transform: scale(0.98);
+        }
+        .btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .btn-primary:hover {
+            background: #1e293b;
+        }
+        .btn:active {
+            transform: scale(0.96);
+        }
+        .footer-note {
+            margin-top: 2rem;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .footer-note span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px #bbf7d0;
+        }
+        .timestamp {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="test-card">
+        <!-- 大标题 + 简略标记 -->
+        <h1>
+            ⚙️ 测试面板
+            <span>简略</span>
+        </h1>
+
+        <!-- 简单描述 -->
+        <p class="description">
+            快速验证页面渲染、交互与布局
+        </p>
+
+        <!-- 信息展示区块 (模拟一些测试数据) -->
+        <div class="info-box">
+            <div class="info-row">
+                <span>📄 页面状态</span>
+                <span class="badge green">✅ 加载正常</span>
+            </div>
+            <div class="info-row">
+                <span>🖥️ 视口尺寸</span>
+                <span id="viewportSize" class="badge">检测中…</span>
+            </div>
+            <div class="info-row">
+                <span>🧪 测试模式</span>
+                <span class="badge">基础 / 简略</span>
+            </div>
+            <div class="info-row">
+                <span>⏱️ 当前时间</span>
+                <span id="liveTime" class="timestamp">--:--:--</span>
+            </div>
+        </div>
+
+        <!-- 按钮组——用于测试点击/交互 -->
+        <div class="btn-group">
+            <button class="btn" id="alertBtn">
+                🔔 弹出提示
+            </button>
+            <button class="btn btn-primary" id="incrementBtn">
+                ➕ 点击计数 <span id="clickCounter">0</span>
+            </button>
+            <button class="btn" id="logBtn">
+                📋 输出日志
+            </button>
+        </div>
+
+        <!-- 极简脚注 -->
+        <div class="footer-note">
+            <span><span class="dot"></span> 实时检测</span>
+            <span>⏺️ 简略模板 v1.0</span>
+        </div>
+    </div>
+
+    <!-- 简略的交互脚本 -->
+    <script>
+        (function() {
+            // 1. 更新视口尺寸 (响应式)
+            function updateViewport() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                const viewportEl = document.getElementById('viewportSize');
+                if (viewportEl) {
+                    viewportEl.textContent = `${width} × ${height}`;
+                }
+            }
+            // 初始更新 + 监听resize
+            updateViewport();
+            window.addEventListener('resize', updateViewport);
+
+            // 2. 实时时钟
+            function updateClock() {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
+                const timeEl = document.getElementById('liveTime');
+                if (timeEl) timeEl.textContent = timeStr;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // 3. 点击计数
+            let count = 0;
+            const counterSpan = document.getElementById('clickCounter');
+            const incrementBtn = document.getElementById('incrementBtn');
+            incrementBtn.addEventListener('click', function() {
+                count += 1;
+                if (counterSpan) counterSpan.textContent = count;
+                // 可选的轻提示 (不打扰)
+                console.log(`[测试] 点击计数更新为: ${count}`);
+            });
+
+            // 4. 弹出提示按钮
+            const alertBtn = document.getElementById('alertBtn');
+            alertBtn.addEventListener('click', function() {
+                alert('✅ 这是一个测试提示。\n页面交互正常。');
+            });
+
+            // 5. 输出日志到控制台 + 小反馈 (通过视觉)
+            const logBtn = document.getElementById('logBtn');
+            logBtn.addEventListener('click', function() {
+                console.log('%c🐞 测试日志', 'color: #3b82f6; font-weight: bold;');
+                console.log('→ 页面运行正常。');
+                console.log('→ 当前时间:', new Date().toLocaleString());
+                console.log('→ 视口尺寸:', window.innerWidth, 'x', window.innerHeight);
+                // 也在页面上短暂显示反馈（简单的背景闪烁）
+                logBtn.style.transition = 'background 0.15s';
+                logBtn.style.background = '#e2e8f0';
+                setTimeout(() => {
+                    logBtn.style.background = '';
+                }, 150);
+                // 可选地也可以改变按钮文字一瞬间
+                const originalText = logBtn.innerHTML;
+                logBtn.innerHTML = '✔️ 已输出';
+                setTimeout(() => {
+                    logBtn.innerHTML = originalText;
+                }, 800);
+            });
+
+            // 附加: 点击计数按钮可以显示一次控制台 (可选)
+            // 已经做了console.log
+
+            // 小彩蛋: 双击卡片标题重置计数器 (为了方便)
+            const h1 = document.querySelector('h1');
+            h1.addEventListener('dblclick', function() {
+                count = 0;
+                if (counterSpan) counterSpan.textContent = '0';
+                console.log('↺ 计数器已重置 (双击标题)');
+            });
+
+            // 为文档添加一个简单的事件监听测试: 键盘按下esc 记录
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    console.log('⏹️ Esc 键按下 (测试事件监听)');
+                }
+            });
+
+            console.log('✨ 简略测试页已准备就绪。');
+        })();
+    </script>
+</body>
+</html>
